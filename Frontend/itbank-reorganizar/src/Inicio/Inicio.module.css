@@ -1,0 +1,99 @@
+/* Contenedor principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Contenedor de los datos del cliente */
+  .card {
+    top: 10p000x;
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco semi-transparente */
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px; /* Ancho moderado */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center;
+  }
+  
+  /* Título */
+  h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo de los párrafos */
+  p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  /* Botón para mostrar detalles */
+  button {
+    background-color: #d45d5d;
+    color: white;
+    font-size: 1rem;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    width: 100%;
+    display: block;
+  }
+  
+  /* Efecto hover en el botón */
+  button:hover {
+    background-color: #a14d4d;
+  }
+  
+  /* Detalles de la cuenta (invisible por defecto) */
+  .accountDetails {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 15px;
+    display: none;
+  }
+  
+  /* Se muestra cuando tiene la clase 'show' */
+  .accountDetails.show {
+    display: block;
+  }
+  
+  /* Mensaje de error */
+  .errorMessage {
+    color: red;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Animación de carga */
+  .loadingMessage {
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    animation: pulse 1.5s infinite; /* Efecto de pulsación */
+  }
+  
+  /* Efecto de pulsación */
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

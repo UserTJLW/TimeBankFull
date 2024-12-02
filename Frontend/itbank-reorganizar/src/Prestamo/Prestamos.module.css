@@ -1,0 +1,99 @@
+/* Prestamos.module.css */
+.prestamoContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+form label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+form select,
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+form input[type="number"] {
+  -moz-appearance: textfield;  
+  -webkit-appearance: none;    
+  appearance: none;  
+}
+
+
+form select:focus,
+form input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  background-color: #851c1c;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .prestamoContainer {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  form select, form input, button {
+    font-size: 14px;
+  }
+}

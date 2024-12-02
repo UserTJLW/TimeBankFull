@@ -1,0 +1,163 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 250px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cardContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.cardFront,
+.cardBack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.cardFront {
+  background: linear-gradient(2deg, #de9eae, #b33a3a);
+  padding: 15px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardBack {
+  background: linear-gradient(135deg, #800020, #b33a3a);
+  color: #fff;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.card:hover .cardBack {
+  opacity: 1;
+}
+
+.cardTitle,
+.cardNumber {
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.cardCVV,
+.cardExpiry {
+  font-size: 16px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.debito {
+  background: linear-gradient(135deg, #800020, #b33a3a);
+}
+
+.credito {
+  background: linear-gradient(135deg, #8b0000, #cc3333);
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #db3434;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
+}
+
+.btnFormulario {
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 50%;
+  background-color: #890000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnFormulario:hover {
+  background-color: #8a0404;
+}
+
+.formulario {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.formulario input,
+.formulario select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.formulario button {
+  padding: 10px;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background-color: #27ae60;
+}

@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap');
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: "Montserrat", sans-serif; 
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  font-family: "Montserrat", sans-serif; 
+}
+
+.page-content {
+  flex: 1;
+  padding: 20px;
+  font-family: "Montserrat", sans-serif; 
+}
+
+.Header {
+  background-color: brown;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1%;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Montserrat", sans-serif; 
+}
+
+.Header .Titulo {
+  font-size: 50px;
+  color: white;
+  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif; 
+}
+
+.Header .Logo {
+  width: 70px;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+  z-index: 1000;
+  font-family: "Montserrat", sans-serif; 
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 10px;
+  right: -50px;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif; 
+}
+
+.sidebar ul li {
+  padding: 15px;
+}
+
+.sidebar ul li a,
+.sidebar ul li button {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif; 
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li button:hover {
+  background-color: #555;
+}
+
+/* Nueva sección para el footer */
+
+.footer {
+  background-color: brown;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  border-top: 1px solid #ddd;
+}
+
+  

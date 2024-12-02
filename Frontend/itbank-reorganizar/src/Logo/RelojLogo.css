@@ -1,0 +1,63 @@
+/* RelojLogo.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+.reloj-logo {
+  position: relative;
+  width: 100px; /* Ajustar según sea necesario */
+  height: 100px; /* Ajustar según sea necesario */
+  border: 5px solid #333; /* Ajustar según sea necesario */
+  border-radius: 50%;
+  background-color: white;
+  margin: auto;
+}
+
+.hand {
+  position: absolute;
+  background: #333;
+  transform-origin: bottom;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hour {
+  height: 25px; /* Ajustar según sea necesario */
+  width: 4px; /* Ajustar según sea necesario */
+  background: #333;
+}
+
+.minute {
+  height: 35px; /* Ajustar según sea necesario */
+  width: 3px; /* Ajustar según sea necesario */
+  background: #666;
+}
+
+.second {
+  height: 45px; /* Ajustar según sea necesario */
+  width: 1px; /* Ajustar según sea necesario */
+  background: red;
+}
+
+.center {
+  position: absolute;
+  width: 8px; /* Ajustar según sea necesario */
+  height: 8px; /* Ajustar según sea necesario */
+  background: #333;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.clock-text {
+  position: relative;
+  font-family: 'Cinzel', serif; /* Cambiado a 'Cinzel' */
+  font-size: 14px; /* Ajustar según sea necesario */
+  font-weight: bold;
+  color: #333; /* Ajustar según sea necesario */
+  text-align: center;
+  line-height: 100px; /* Igual al tamaño del reloj para centrar verticalmente */
+  width: 100%; /* Igual al tamaño del reloj para centrar horizontalmente */
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

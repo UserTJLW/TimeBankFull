@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.registro {
+  max-width: 100%;
+  width: 500px;
+  min-height: 450px;
+  color: white;
+  padding: 20px;
+  background-color: brown; /* Color marrón para el fondo */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  margin: 20px auto; /* Añade espacio alrededor del formulario */
+  position: relative;
+  z-index: 1;
+}
+
+.registro h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.registro p {
+  color: white;
+}
+
+.registro label {
+  color: white;
+}
+
+/* Estilos para los labels y inputs */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  color: white;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+input:focus, select:focus {
+  border-color: #ffffff;
+  outline: none;
+}
+
+/* Estilos para el botón de envío */
+button {
+  padding: 12px 20px;
+  background-color: rgb(255, 255, 255); /* Fondo blanco */
+  color: #000000; /* Color del texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; /* Cambia el cursor a una mano */
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+}
+
+button:hover {
+  background-color: rgb(208, 124, 124); /* Fondo marrón oscuro al pasar el ratón */
+}
+
+button:active {
+  background-color: white; /* Fondo blanco al presionar */
+}
+
+/* Estilos para el mensaje de error */
+.error-message {
+  color: rgb(252, 252, 252);
+  margin-bottom: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+
+.success-message {
+  color: rgb(204, 255, 204);
+  margin-bottom: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+
+/* Estilos para el enlace */
+.registro a {
+  color: rgb(252, 252, 252);
+  text-decoration: none;
+}
+
+.registro a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 600px) {
+  .registro {
+    width: 90%; /* Ajusta el ancho para pantallas pequeñas */
+    min-height: 400px; /* Ajusta la altura mínima */
+  }
+
+  input, select, button {
+    font-size: 14px; /* Reduce el tamaño de los textos en pantallas pequeñas */
+  }
+}

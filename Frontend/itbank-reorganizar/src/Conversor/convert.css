@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+body {
+  font-family: 'Cinzel', serif;
+  background-color: #F4F4F9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ocupa el alto completo de la vista */
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2rem; /* Tamaño de fuente más grande para mejor legibilidad */
+  color: #840d0d;
+}
+
+/* Convertidor de monedas */
+.currency-converter {
+  background-color: #a71d1d;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  color: white;
+  margin: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto de escalado en el contenedor */
+.currency-converter:hover {
+  transform: scale(1.02);
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+/* Inputs y selects */
+select, input[type="number"] {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #F9F9F9;
+  transition: border-color 0.3s ease;
+}
+
+select:focus, input[type="number"]:focus {
+  border-color: #AA3B3B;
+  outline: none;
+}
+
+/* Botón */
+button {
+  background-color: #6a4e23;
+  color: white;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #4a3a1f;
+}
+
+/* Mensaje de error y resultado */
+.error-message, .result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #e74c3c;
+}
+
+.result p {
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* Medios de comunicación: Responsividad */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .currency-converter {
+    padding: 20px;
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Reducir tamaño de h1 en dispositivos pequeños */
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  select, input[type="number"], button {
+    font-size: 14px; /* Ajustar tamaño de texto para pantallas pequeñas */
+  }
+
+  button {
+    padding: 10px 15px; /* Botón un poco más pequeño en pantallas pequeñas */
+  }
+}
+
+/* Medios de comunicación para dispositivos extra pequeños (móviles) */
+@media (max-width: 480px) {
+  .currency-converter {
+    padding: 15px;
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 1.2rem; /* Aún más pequeño en dispositivos muy pequeños */
+  }
+
+  select, input[type="number"], button {
+    font-size: 13px;
+  }
+}

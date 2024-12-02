@@ -1,0 +1,36 @@
+/* src/components/Message.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+.message {
+    font-family: 'Cinzel', serif;
+    padding: 5px;
+    background-color: rgb(107, 13, 13);
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    position: fixed;
+    bottom: 20px; /* Ajusta la posición según sea necesario */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%);
+    max-width: 1000px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Alinea el texto y el botón a los extremos */
+    align-items: center; /* Centra verticalmente */
+}
+
+.message p {
+    margin: 0; /* Elimina el margen para que el texto y el botón estén bien alineados */
+    flex: 1; /* Permite que el texto ocupe el espacio restante */
+}
+
+.closeButton {
+    background-color: darkred;
+    border: none;
+    color: white;
+    padding: 1px 1px; /* Ajusta el padding para el botón */
+    border-radius: 4px; /* Redondea las esquinas del botón */
+    cursor: pointer;
+    font-size: 16px; /* Ajusta el tamaño del texto del botón */
+}

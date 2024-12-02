@@ -1,0 +1,107 @@
+/* Estilos generales del sidebar */
+.sidebarWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;  /* Ancho del sidebar */
+  background: linear-gradient(2deg, #2e0505, #e46060); /* Burdeos para débito */
+  transform: translateX(-220px);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.sidebarWrapper.open {
+  transform: translateX(0); /* Mueve el sidebar a la vista */
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding-top: 20px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+
+.sidebarToggle {
+  position: absolute;
+  top: 20px;
+  right: -35px;  /* Coloca el botón de despliegue fuera del sidebar */
+  background-color: #ffffff; /* Bordó */
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  border: none;
+
+  width: 35px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebarToggle:hover {
+  color: white;
+  background-color: #c97b7b; 
+  transform: scale(1.2); 
+}
+
+
+
+.menuList {
+  list-style: none;
+  padding: 5px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.menuList li {
+  width: 100%;
+  padding: 20px 15px;
+  text-align: left;
+
+}
+
+.menuList li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 3px;
+  transition: padding-left 0.3s ease, background-color 0.3s ease;
+}
+
+.menuList li a:hover {
+  background-color: #be0a0a4d; /* Efecto de hover en los enlaces */
+  padding-left: 35px;
+
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;  /* Reduce el ancho en pantallas más pequeñas */
+  }
+
+  .sidebarToggle {
+    right: -20px;  /* Ajusta la posición del botón para pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 150px;  /* Reduce aún más el ancho en pantallas pequeñas */
+  }
+
+  .menuList li {
+    padding: 10px 15px;
+  }
+
+  .menuList li a {
+    font-size: 16px;
+  }
+}

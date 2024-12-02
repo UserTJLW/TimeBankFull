@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.helpCenter {
+    max-width: 800px;
+    margin: 20px auto; /* Ajusta el margen superior e inferior */
+    padding: 20px;
+    background-color: rgba(165, 42, 42, 0.349);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Cambiado de absolute a relative */
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.searchSection input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.faqSection {
+    margin-bottom: 40px;
+}
+
+.faqSection h2 {
+    font-size: 22px;
+    color: black;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.faqSection ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.faqSection li {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.faqSection li strong {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contactSection {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contactSection h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contactSection form div {
+    margin-bottom: 15px;
+}
+
+.contactSection label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contactSection input,
+.contactSection textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contactSection button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contactSection button:hover {
+    background-color: rgb(97, 56, 56);
+}
+
+.errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+  

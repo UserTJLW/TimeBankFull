@@ -1,0 +1,130 @@
+/* Contenedor principal */
+.transferenciaContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Título */
+  .transferenciaContainer h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Mensaje de error */
+  .errorMessage {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Estilo del formulario */
+  .formGroup {
+    margin-bottom: 15px;
+  }
+  
+  .formGroup label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .formGroup select,
+  .formGroup input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s;
+  }
+  
+  .formGroup select:focus,
+  .formGroup input:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  /* Estilo del botón */
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #9c1919;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:disabled {
+    background-color: #b0bec5;
+    cursor: not-allowed;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #831919;
+  }
+  
+  /* Diseño responsive */
+  @media (max-width: 768px) {
+    .transferenciaContainer {
+      padding: 15px;
+      margin: 10px;
+    }
+  
+    .transferenciaContainer h2 {
+      font-size: 20px;
+    }
+  
+    .formGroup label {
+      font-size: 14px;
+    }
+  
+    .formGroup select,
+    .formGroup input {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .transferenciaContainer {
+      padding: 10px;
+    }
+  
+    .transferenciaContainer h2 {
+      font-size: 18px;
+    }
+  
+    .formGroup label {
+      font-size: 12px;
+    }
+  
+    .formGroup select,
+    .formGroup input {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    button {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+  
