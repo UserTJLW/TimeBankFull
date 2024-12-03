@@ -69,7 +69,7 @@ input[type="email"]:focus {
 /* Estilos para el botón de envío */
 button {
   padding: 12px 20px;
-  background-color: #ffffff; /* Fondo naranja */
+  background-color: #ffffff; 
   color: brown;
   border: none;
   border-radius: 5px;
@@ -81,12 +81,12 @@ button {
 
 button:hover {
   color: white;
-  background-color: #ffffff; /* Fondo naranja más oscuro */
+  background-color: #ffffff;
 }
 
 button:active {
   color: white;
-  background-color: #800101; /* Fondo más oscuro al presionar */
+  background-color: #800101;
 }
 
 /* Estilos para el mensaje de error y éxito */
@@ -109,10 +109,10 @@ button:active {
   text-decoration: underline;
 }
 
-/* Estilos responsivos */
+
 @media (max-width: 600px) {
   .registro {
-    width: 90%; /* Ajusta el ancho para pantallas pequeñas */
+    width: 90%;
     min-height: 400px;
   }
 

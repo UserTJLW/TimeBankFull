@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  font-family: "Montserrat", sans-serif; /* Aplicando Montserrat */
+  font-family: "Montserrat", sans-serif; 
 }
 
 .App-logo {
@@ -25,12 +25,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  font-family: "Montserrat", sans-serif; /* Aplicando Montserrat */
+  font-family: "Montserrat", sans-serif;
 }
 
 .App-link {
   color: #61dafb;
-  font-family: "Montserrat", sans-serif; /* Aplicando Montserrat */
+  font-family: "Montserrat", sans-serif; 
 }
 
 @keyframes App-logo-spin {

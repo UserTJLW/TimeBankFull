@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import styles from './Prestamos.module.css'; // Importa el archivo CSS
-
+import styles from './Prestamos.module.css'; 
 const Prestamo = () => {
   const [tipoPrestamo, setTipoPrestamo] = useState('');
   const [monto, setMonto] = useState('');

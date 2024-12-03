@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from './Sidebar.module.css'; // Usando CSS Modules
+import styles from './Sidebar.module.css'; 
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);

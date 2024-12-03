@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../Login/AuthContext';  // Importar el contexto de autenticación
+import { useAuth } from '../Login/AuthContext';  
 import RelojLogo from '../Logo/RelojLogo';
-import styles from './Header.module.css';  // Importar el módulo de CSS
+import styles from './Header.module.css'; 
 
 const Header = () => {
   const { authData, logout } = useAuth(); // Usamos el hook de autenticación
@@ -11,7 +11,6 @@ const Header = () => {
     try {
       const response = await fetch('http://127.0.0.1:8000/clientes/logout/', {
         method: 'POST',
-        //credentials: 'include', // Asegúrate de que las cookies se envíen si se usan
       });
   
       if (response.ok) {

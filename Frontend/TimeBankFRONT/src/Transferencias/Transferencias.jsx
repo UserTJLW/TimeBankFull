@@ -82,7 +82,7 @@ const handleTransferir = async () => {
     return;
   }
 
-  const saldoDisponible = clienteData?.cuenta?.saldo; // Verifica si tienes el saldo disponible
+  const saldoDisponible = clienteData?.cuenta?.saldo; // Verifica si tiene el cliente el saldo disponible
   if (parseFloat(monto) <= 0) {
     setError('El monto debe ser mayor a cero.');
     return;

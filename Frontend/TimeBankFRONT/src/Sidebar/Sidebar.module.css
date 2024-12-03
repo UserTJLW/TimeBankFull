@@ -5,7 +5,7 @@
   left: 0;
   height: 100%;
   width: 250px;  /* Ancho del sidebar */
-  background: linear-gradient(2deg, #2e0505, #e46060); /* Burdeos para débito */
+  background: linear-gradient(2deg, #2e0505, #e46060); 
   transform: translateX(-220px);
   transition: transform 0.3s ease-in-out;
   z-index: 999;

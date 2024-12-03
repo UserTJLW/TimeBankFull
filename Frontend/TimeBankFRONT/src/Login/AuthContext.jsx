@@ -4,7 +4,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState(null);
-  const [loading, setLoading] = useState(true);  // Agregar estado de carga
+  const [loading, setLoading] = useState(true);  
   
   useEffect(() => {
     const token = localStorage.getItem('token');

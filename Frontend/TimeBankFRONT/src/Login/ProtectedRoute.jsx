@@ -3,10 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 const ProtectedRoute = ({ element }) => {
-  const { authData, loading } = useAuth();  // Obtén authData y loading desde el contexto
-
+  const { authData, loading } = useAuth();  
   if (loading) {
-    // Mientras se esté cargando el estado de autenticación, no redirigimos ni renderizamos nada.
+    // Mientras se esté cargando el estado de autenticación, no redirigimos ni renderizamos nadaa
     return null;
   }
 

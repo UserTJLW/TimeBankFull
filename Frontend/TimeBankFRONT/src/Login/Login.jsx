@@ -30,7 +30,7 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        login(data.token);  // Esto actualizará el contexto de autenticación
+        login(data.token);  // Esto actualizara el contexto de autenticación
         localStorage.setItem('token', data.token);  // Guarda el token en el localStorage
         navigate('/inicio');  // Redirige al usuario inmediatamente
       } else {

@@ -14,4 +14,4 @@ class CuentaSerializer(serializers.ModelSerializer):
 class CuentaDestinoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cuenta
-        fields = ['numero', 'titular']  # Ajusta los campos que deseas mostrar
+        fields = ['numero', 'titular'] 

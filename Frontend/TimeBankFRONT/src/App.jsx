@@ -1,8 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { AuthProvider } from './Login/AuthContext';  // Asegúrate de que el AuthProvider esté correctamente importado
+import { AuthProvider } from './Login/AuthContext';  
 import Layout from './Layout/layout';
-import Prestamo from './Prestamo/Prestamo';
 import Convert from './Conversor/convert';
 import HelpCenter from './Help/Helpcenter';
 import Cuentas from './Cuentas/Cuentas';

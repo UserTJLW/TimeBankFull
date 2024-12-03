@@ -19,7 +19,7 @@
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
-    flex-wrap: wrap; /* Soporte para dispositivos pequeños */
+    flex-wrap: wrap; /* Soporte para dispositivos chiquitos */
   }
   
   .tab {

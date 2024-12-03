@@ -3,18 +3,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework import status, viewsets, generics
+from rest_framework import status, viewsets
 from .models import Cliente
-from rest_framework.generics import RetrieveAPIView
 from rest_framework.exceptions import NotFound, PermissionDenied
 from .serializers import ClienteSerializer, ClienteDetailSerializer
-from cuentas.serializers import CuentaSerializer
-from tarjetas.serializers import TarjetaSerializer
-from datetime import datetime, timedelta
 from django.db import transaction
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
-import uuid
+
 from tarjetas.models import Tarjeta
 # Vista para login del cliente
 class ClienteLoginView(APIView):
@@ -41,7 +37,7 @@ class ClienteLoginView(APIView):
 
 # Vista para obtener detalles del cliente autenticado
 class ClienteLoggedInView(APIView):
-    authentication_classes = [TokenAuthentication]  # Asegúrate de que la autenticación de token esté habilitada
+    authentication_classes = [TokenAuthentication] 
     permission_classes = []  # No es necesario tener restricciones adicionales para esta vista en particular
 
     def get(self, request, *args, **kwargs):

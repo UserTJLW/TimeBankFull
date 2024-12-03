@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../Login/AuthContext';  // Importar el contexto de autenticación
+import { useAuth } from '../Login/AuthContext';  
 import { useNavigate } from 'react-router-dom';
-import styles from './Movimientos.module.css'; // Importar el archivo CSS de los movimientos
+import styles from './Movimientos.module.css'; 
 
 const Movimientos = () => {
   const { authData } = useAuth();  // Usamos el hook de autenticación

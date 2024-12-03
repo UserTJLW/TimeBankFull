@@ -54,7 +54,7 @@ const Tarjetas = () => {
     return cvvGenerado;
   };
 
-  // Función para establecer la fecha de vencimiento (9 años a partir de hoy)
+  // Función para establecer la fecha de vencimiento (9 años a partir de hoy fue la politica de negocio que definimos)
   const generarFechaVencimiento = () => {
     const hoy = new Date();
     const añoVencimiento = hoy.getFullYear() + 9;

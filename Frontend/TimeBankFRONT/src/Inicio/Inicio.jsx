@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Inicio.module.css';  // Asegúrate de importar el CSS Module
+import styles from './Inicio.module.css';
 
 const LandPage = () => {
   const [clienteData, setClienteData] = useState(null);
@@ -7,14 +7,12 @@ const LandPage = () => {
   const [showAccountDetails, setShowAccountDetails] = useState(false); // Estado para mostrar/ocultar datos de la cuenta
 
   useEffect(() => {
-    // Obtener el token de autenticación (asegúrate de que esté en localStorage o sessionStorage)
-    const token = localStorage.getItem('token'); // O usa sessionStorage si prefieres
-
+    const token = localStorage.getItem('token'); 
     if (token) {
       fetch('http://127.0.0.1:8000/clientes/logged-in/', {
         method: 'GET',
         headers: {
-          'Authorization': `Token ${token}`,  // Formato correcto: 'Token <tu-token>'
+          'Authorization': `Token ${token}`, 
         },
       })
         .then(response => {
@@ -25,7 +23,7 @@ const LandPage = () => {
           return response.json();
         })
         .then(data => {
-          setClienteData(data); // Recibes los datos del cliente aquí
+          setClienteData(data); // Recibo los datos del cliente aquí
         })
         .catch(error => {
           setError('Error al obtener los datos del cliente: ' + error.message);

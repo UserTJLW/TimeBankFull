@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 .reloj-logo {
   position: relative;
-  width: 100px; /* Ajustar según sea necesario */
-  height: 100px; /* Ajustar según sea necesario */
-  border: 5px solid #333; /* Ajustar según sea necesario */
+  width: 100px; 
+  height: 100px; 
+  border: 5px solid #333; 
   border-radius: 50%;
   background-color: white;
   margin: auto;
@@ -20,27 +20,27 @@
 }
 
 .hour {
-  height: 25px; /* Ajustar según sea necesario */
-  width: 4px; /* Ajustar según sea necesario */
+  height: 25px; 
+  width: 4px; 
   background: #333;
 }
 
 .minute {
-  height: 35px; /* Ajustar según sea necesario */
-  width: 3px; /* Ajustar según sea necesario */
+  height: 35px;
+  width: 3px; 
   background: #666;
 }
 
 .second {
-  height: 45px; /* Ajustar según sea necesario */
-  width: 1px; /* Ajustar según sea necesario */
+  height: 45px; 
+  width: 1px; 
   background: red;
 }
 
 .center {
   position: absolute;
-  width: 8px; /* Ajustar según sea necesario */
-  height: 8px; /* Ajustar según sea necesario */
+  width: 8px; 
+  height: 8px;
   background: #333;
   border-radius: 50%;
   top: 50%;
@@ -50,12 +50,12 @@
 
 .clock-text {
   position: relative;
-  font-family: 'Cinzel', serif; /* Cambiado a 'Cinzel' */
-  font-size: 14px; /* Ajustar según sea necesario */
+  font-family: 'Cinzel', serif; 
+  font-size: 14px; 
   font-weight: bold;
-  color: #333; /* Ajustar según sea necesario */
+  color: #333;
   text-align: center;
-  line-height: 100px; /* Igual al tamaño del reloj para centrar verticalmente */
+  line-height: 100px; 
   width: 100%; /* Igual al tamaño del reloj para centrar horizontalmente */
   top: 30%;
   left: 50%;
