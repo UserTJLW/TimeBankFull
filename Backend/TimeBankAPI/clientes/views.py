@@ -82,20 +82,15 @@ class ClienteDetailView(APIView):
         serializer = ClienteDetailSerializer(cliente)
         return Response(serializer.data)
 
-# Vista para cerrar sesión
+
 class ClienteLogoutView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def post(self, request):
         logout(request)  # Cierra la sesión del usuario
-        return Response({"message": "Logout exitoso"}, status=status.HTTP_200_OK)
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from django.db import transaction
-from django.core.exceptions import ValidationError
-from .serializers import ClienteSerializer
-
+        return Response({
+            "message": "Logout exitoso"
+        }, status=status.HTTP_200_OK)
 class ClienteRegisterView(APIView):
     permission_classes = [AllowAny]  # Permitir acceso sin autenticación
 
