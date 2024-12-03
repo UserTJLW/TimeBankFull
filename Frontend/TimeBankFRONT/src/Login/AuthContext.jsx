@@ -1,19 +1,23 @@
-// AuthContext.js
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState(null);
+  const [loading, setLoading] = useState(true);  // Agregar estado de carga
   
   useEffect(() => {
     const token = localStorage.getItem('token');
+    console.log('Token recuperado desde localStorage:', token);
+
     if (token) {
       setAuthData({ token });
     } else {
-      setAuthData(null);  // Si no hay token, asegurarse de que el estado esté limpio
+      setAuthData(null);
     }
-  }, []);  // Esto solo se ejecuta una vez al montar el componente
+    
+    setLoading(false);  // Cambiar el estado de carga después de verificar el token
+  }, []);  // Esto se ejecuta solo una vez al montar el componente
 
   const login = (token) => {
     setAuthData({ token });
@@ -26,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ authData, login, logout }}>
+    <AuthContext.Provider value={{ authData, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

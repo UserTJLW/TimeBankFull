@@ -1,11 +1,12 @@
+# movimientos/views.py
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .serializers import TransferenciaSerializer, PrestamoSerializer
-from cuentas.models import Cuenta
-from clientes.models import Cliente
 from transferencias.models import Transferencia
 from prestamos.models import Prestamo
+from cuentas.models import Cuenta
+from clientes.models import Cliente
+from .serializers import TransferenciaSerializer, PrestamoSerializer
 
 class MovimientoViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]

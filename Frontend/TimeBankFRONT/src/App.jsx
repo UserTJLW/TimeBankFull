@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './Login/AuthContext';  // Asegúrate de que el AuthProvider esté correctamente importado
@@ -14,6 +13,7 @@ import ProtectedRoute from './Login/ProtectedRoute';
 import LandPage from './Inicio/Inicio';
 import Transferencias from './Transferencias/Transferencias';
 import Prestamos from './Prestamo/Prestamo';
+import Movimientos from './Movimientos/movimientos';
 
 const router = createBrowserRouter([
   {
@@ -22,15 +22,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/inicio',
-        element: <ProtectedRoute element={<LandPage />} />,  // Ruta protegida
+        element: <ProtectedRoute element={<LandPage />} />,
       },
       {
         path: '/transferencias',
-        element: <ProtectedRoute element={<Transferencias />} />,  // Ruta protegida
+        element: <ProtectedRoute element={<Transferencias />} />,
       },
       {
         path: '/login',
-        element: <Login />,  // Ruta de login
+        element: <Login />,
       },
       {
         path: '/signup',
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/prestamos',
-        element: <ProtectedRoute element={<Prestamos />} />,  // Ruta protegida
+        element: <ProtectedRoute element={<Prestamos />} />,
       },
       {
         path: '/cuentas',
@@ -51,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/convertidor',
         element: <ProtectedRoute element={<Convert />} />,
+      },
+      {
+        path: '/movimientos',
+        element: <ProtectedRoute element={<Movimientos />} />,
       },
       {
         path: '/helpcenter',

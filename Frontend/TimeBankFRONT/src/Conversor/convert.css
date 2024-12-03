@@ -29,7 +29,7 @@ h1 {
 
 /* Convertidor de monedas */
 .currency-converter {
-  background-color: #a71d1d;
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -45,10 +45,15 @@ h1 {
   transform: scale(1.02);
 }
 
-.input-group {
+.input-group label {
+  font-size: 24px;
+  color: #b33a3a;
   margin-bottom: 20px;
 }
-
+.container h1 {
+  color: #b33a3a;
+  padding: 10px;
+}
 /* Inputs y selects */
 select, input[type="number"] {
   padding: 12px;
@@ -94,7 +99,7 @@ button:hover {
 
 .result p {
   font-weight: bold;
-  color: #ffffff;
+  color: #b33a3a;
   font-size: 1.2rem;
   margin-top: 10px;
 }

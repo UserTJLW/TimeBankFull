@@ -58,7 +58,9 @@ class ClienteLoggedInView(APIView):
                 "tipo_cliente": cliente.tipo_cliente,
                 "cuenta": cliente.cuenta.tipo,
                 "saldo": cliente.cuenta.saldo,
-                "cvu": cliente.cuenta.cvu
+                "cvu": cliente.cuenta.cvu,
+                "nacimiento": cliente.fecha_nacimiento,
+                "user": user.username
             }, status=status.HTTP_200_OK)
         else:
             return Response({"error": "No estás autenticado."}, status=status.HTTP_401_UNAUTHORIZED)

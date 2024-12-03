@@ -21,8 +21,13 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .cardContent {
@@ -45,7 +50,7 @@
 }
 
 .cardFront {
-  background: linear-gradient(2deg, #de9eae, #b33a3a);
+  background: linear-gradient(2deg, #de9eae, brown);
   padding: 15px;
   color: #ffffff;
   display: flex;
@@ -71,9 +76,13 @@
 
 .cardTitle,
 .cardNumber {
-  font-size: 20px;
-  margin: 10px 0;
+  font-size: 22px;
+  margin: 15px 0;
   text-align: center;
+  font-style: italic;
+
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .cardCVV,
@@ -81,14 +90,8 @@
   font-size: 16px;
   margin: 10px 0;
   text-align: center;
-}
-
-.debito {
-  background: linear-gradient(135deg, #800020, #b33a3a);
-}
-
-.credito {
-  background: linear-gradient(135deg, #8b0000, #cc3333);
+  
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .spinnerContainer {
@@ -116,15 +119,26 @@
   color: red;
   font-weight: bold;
 }
+.mensajeExito {
+  color: green;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.mensajeError {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+}
 
 .btnFormulario {
   margin-top: 20px;
   padding: 10px 20px;
-  width: 50%;
-  background-color: #890000;
+  width: 30%;
+  background-color: brown;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 100px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -146,12 +160,12 @@
 .formulario select {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid brown;
 }
 
 .formulario button {
   padding: 10px;
-  background-color: #2ecc71;
+  background-color:brown;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -159,5 +173,43 @@
 }
 
 .formulario button:hover {
-  background-color: #27ae60;
+  background-color: brown;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cardContainer {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .btnFormulario {
+    width: 100%;
+  }
+
+  .formulario {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .btnFormulario {
+    width: 100%;
+  }
+
+  .formulario input,
+  .formulario select,
+  .formulario button {
+    padding: 8px;
+  }
 }

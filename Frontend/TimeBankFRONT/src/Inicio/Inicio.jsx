@@ -51,9 +51,11 @@ const LandPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h1>Bienvenido {clienteData.nombre} {clienteData.apellido}!</h1>
+        <h1>Hola {clienteData.user} que bueno que estes de vuelta!</h1>
+        <h2>Informacion personal: </h2>
         <p>Email: {clienteData.email}</p>
         <p>Telefono: {clienteData.telefono}</p>
+        <p>Fecha de nacimiento: {clienteData.nacimiento}</p>
         <p>DNI: {clienteData.dni}</p>
         <p>Tipo de cuenta: {clienteData.cuenta}</p>
 

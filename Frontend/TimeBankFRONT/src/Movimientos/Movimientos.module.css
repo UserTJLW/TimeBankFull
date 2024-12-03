@@ -1,0 +1,165 @@
+/* Movimientos.module.css */
+.container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Soporte para dispositivos pequeños */
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 5px; /* Para mejorar el espaciado */
+  }
+  
+  .tab:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-3px);
+  }
+  
+  .activeTab {
+    background-color: brown;
+    color: white;
+  }
+  
+  .section {
+    margin-top: 20px;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #555;
+    font-weight: 500;
+  }
+  
+  .list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .item {
+    background-color: #f9f9f9;
+    margin: 8px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: transform 0.3s ease;
+  }
+  
+  .item:hover {
+    transform: scale(1.02);
+  }
+  
+  .loading,
+  .error {
+    font-size: 18px;
+    color: red;
+    text-align: center;
+  }
+  
+  .loading {
+    margin-top: 20px;
+  }
+  
+  .error {
+    margin-top: 20px;
+    color: #f44336;
+  }
+  
+  /* === Media Queries para Diseño Responsivo === */
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+      margin: 10px;
+    }
+  
+    .title {
+      font-size: 24px;
+      text-align: center;
+    }
+  
+    .tabs {
+      flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+      align-items: center;
+    }
+  
+    .tab {
+      width: 100%; /* Botones ocupan el ancho completo */
+      padding: 12px;
+      font-size: 18px;
+    }
+  
+    .section {
+      margin-top: 15px;
+    }
+  
+    .subtitle {
+      font-size: 18px;
+    }
+  
+    .item {
+      font-size: 14px; /* Reducir el tamaño de texto en pantallas pequeñas */
+      padding: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 10px;
+      margin: 5px;
+    }
+  
+    .title {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+  
+    .tabs {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .tab {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+    }
+  
+    .section {
+      margin-top: 10px;
+    }
+  
+    .subtitle {
+      font-size: 16px;
+    }
+  
+    .item {
+      font-size: 12px; /* Texto más pequeño para móviles */
+      padding: 10px;
+    }
+  }
+  

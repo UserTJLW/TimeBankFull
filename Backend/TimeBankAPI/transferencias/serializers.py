@@ -3,9 +3,11 @@ from .models import Transferencia
 from cuentas.models import Cuenta
 
 class TransferenciaSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Transferencia
-        fields = ['id', 'destino', 'monto', 'fecha', 'estado']
+        fields = ['id', 'destino','origen_nombre', 'destino_nombre', 'monto', 'fecha', 'estado']
+
 
     def validate(self, data):
         """

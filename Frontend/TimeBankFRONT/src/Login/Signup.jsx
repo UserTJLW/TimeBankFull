@@ -19,7 +19,7 @@ const Signup = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth(); // Obtén el contexto de autenticación
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,11 +51,10 @@ const Signup = () => {
       if (response.ok) {
         setSuccess(true);
         setError('');
-        
-        // Si el backend devuelve un token al registrarse, guárdalo
+
         if (data.token) {
-          login(data.token); // Llama al contexto para guardar el token
-          localStorage.setItem('token', data.token); // Guarda el token en el localStorage
+          login(data.token);
+          localStorage.setItem('token', data.token);
         }
 
         setTimeout(() => {
@@ -71,7 +70,7 @@ const Signup = () => {
 
   return (
     <div className={styles.registro}>
-      <h1>Registrar Usuario</h1>
+      <h1>Registrarme</h1>
       {error && <p className={styles.errorMessage}>{error}</p>}
       {success && <p className={styles.successMessage}>Registro exitoso. Redirigiendo...</p>}
       <form onSubmit={handleSubmit}>

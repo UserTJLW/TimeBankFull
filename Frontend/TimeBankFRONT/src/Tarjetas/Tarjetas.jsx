@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Tarjetas.module.css'; // Importa tu CSS module
+import styles from './Tarjetas.module.css';
 
 const Tarjetas = () => {
   const [tarjetas, setTarjetas] = useState([]);
   const [error, setError] = useState(null);
-  const [tipo, setTipo] = useState('DEBITO');  // Por defecto, tipo 'DEBITO'
-  const [numero, setNumero] = useState('');
-  const [cvv, setCvv] = useState('');
-  const [fechaVencimiento, setFechaVencimiento] = useState('');
-  const [errorCrear, setErrorCrear] = useState(null);
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);  // Estado para controlar la visualización del formulario
+  const [tipo, setTipo] = useState('DEBITO');
+  const [mensajeExito, setMensajeExito] = useState('');
+  const [mensajeError, setMensajeError] = useState('');
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   const token = localStorage.getItem('token');
 
@@ -38,14 +36,45 @@ const Tarjetas = () => {
     }
   }, [token]);
 
+  // Función para generar un número de tarjeta aleatorio de 12 dígitos
+  const generarNumeroTarjeta = () => {
+    let numeroGenerado = '';
+    for (let i = 0; i < 12; i++) {
+      numeroGenerado += Math.floor(Math.random() * 10);
+    }
+    return numeroGenerado;
+  };
+
+  // Función para generar un CVV aleatorio de 3 dígitos
+  const generarCvv = () => {
+    let cvvGenerado = '';
+    for (let i = 0; i < 3; i++) {
+      cvvGenerado += Math.floor(Math.random() * 10);
+    }
+    return cvvGenerado;
+  };
+
+  // Función para establecer la fecha de vencimiento (9 años a partir de hoy)
+  const generarFechaVencimiento = () => {
+    const hoy = new Date();
+    const añoVencimiento = hoy.getFullYear() + 9;
+    const mesVencimiento = hoy.getMonth() + 1; // Mes actual + 1
+    return `${añoVencimiento}-${String(mesVencimiento).padStart(2, '0')}-01`; // El día se establece en el 1 del mes
+  };
+
   const handleCrearTarjeta = (e) => {
     e.preventDefault();
 
+    // Establecer los valores generados
+    const numeroGenerado = generarNumeroTarjeta();
+    const cvvGenerado = generarCvv();
+    const fechaVencimientoGenerada = generarFechaVencimiento();
+
     const nuevaTarjeta = {
       tipo,
-      numero,
-      cvv,
-      fecha_vencimiento: fechaVencimiento,
+      numero: numeroGenerado,
+      cvv: cvvGenerado,
+      fecha_vencimiento: fechaVencimientoGenerada,
     };
 
     if (token) {
@@ -64,18 +93,23 @@ const Tarjetas = () => {
           return response.json();
         })
         .then(data => {
-          setTarjetas([...tarjetas, data]);  // Agregar la tarjeta creada a la lista
-          alert('Tarjeta agregada con éxito');
-          setNumero('');
-          setCvv('');
-          setFechaVencimiento('');
-          setMostrarFormulario(false); // Cerrar formulario después de agregar la tarjeta
+          setTarjetas([...tarjetas, data]);
+          setMensajeExito('Tarjeta agregada con éxito');
+          setMensajeError(''); // Limpiar mensaje de error
+          setMostrarFormulario(false);
+
+          // Limpiar mensaje después de 3 segundos
+          setTimeout(() => {
+            setMensajeExito('');
+          }, 3000);
         })
         .catch(error => {
-          setErrorCrear('Error al agregar la tarjeta: ' + error.message);
+          setMensajeError('Error al agregar la tarjeta: ' + error.message);
+          setMensajeExito(''); // Limpiar mensaje de éxito
         });
     } else {
-      setErrorCrear('No se encontró el token de autenticación');
+      setMensajeError('No se encontró el token de autenticación');
+      setMensajeExito(''); // Limpiar mensaje de éxito
     }
   };
 
@@ -83,29 +117,21 @@ const Tarjetas = () => {
     return <p className={styles.errorMessage}>{error}</p>;
   }
 
-  if (tarjetas.length === 0) {
-    return (
-      <div className={styles.spinnerContainer}>
-        <div className={styles.spinner}></div>
-        <p>Cargando tarjetas...</p>
-      </div>
-    );
-  }
-
   return (
     <div className={styles.App}>
       <h1>Mis Tarjetas</h1>
-      {errorCrear && <p className={styles.errorMessage}>{errorCrear}</p>}
 
-      {/* Botón para mostrar el formulario de agregar tarjeta */}
+      {/* Mostrar mensajes de éxito o error */}
+      {mensajeExito && <p className={styles.mensajeExito}>{mensajeExito}</p>}
+      {mensajeError && <p className={styles.mensajeError}>{mensajeError}</p>}
+
       <button
         onClick={() => setMostrarFormulario(!mostrarFormulario)}
-        className={styles.btnFormulario}
+        className={`${styles.btnFormulario} ${mostrarFormulario ? styles.activeBtn : ''}`}
       >
         {mostrarFormulario ? 'Cancelar' : 'Agregar Nueva Tarjeta'}
       </button>
 
-      {/* Formulario para agregar tarjeta */}
       {mostrarFormulario && (
         <form onSubmit={handleCrearTarjeta} className={styles.formulario}>
           <h2>Agregar Tarjeta</h2>
@@ -115,36 +141,6 @@ const Tarjetas = () => {
               <option value="DEBITO">Débito</option>
               <option value="CREDITO">Crédito</option>
             </select>
-          </div>
-          <div>
-            <label htmlFor="numero">Número de tarjeta</label>
-            <input
-              type="text"
-              id="numero"
-              value={numero}
-              onChange={(e) => setNumero(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="cvv">CVV</label>
-            <input
-              type="text"
-              id="cvv"
-              value={cvv}
-              onChange={(e) => setCvv(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="fechaVencimiento">Fecha de vencimiento</label>
-            <input
-              type="date"
-              id="fechaVencimiento"
-              value={fechaVencimiento}
-              onChange={(e) => setFechaVencimiento(e.target.value)}
-              required
-            />
           </div>
           <button type="submit">Agregar Tarjeta</button>
         </form>
@@ -157,13 +153,10 @@ const Tarjetas = () => {
             key={tarjeta.id}
           >
             <div className={styles.cardContent}>
-              {/* Parte frontal */}
               <div className={styles.cardFront}>
                 <div className={styles.cardTitle}>{tarjeta.tipo === 'DEBITO' ? 'Débito' : 'Crédito'}</div>
                 <div className={styles.cardNumber}>{tarjeta.numero}</div>
               </div>
-              
-              {/* Parte trasera (se muestra solo cuando pasa el mouse) */}
               <div className={styles.cardBack}>
                 <div className={styles.cardCVV}>CVV: {tarjeta.cvv}</div>
                 <div className={styles.cardExpiry}>Exp: {tarjeta.fecha_vencimiento}</div>

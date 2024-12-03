@@ -38,11 +38,12 @@ function Convert() {
 
   return (
     <div className='container'>
-      <h1>Convertidor de Monedas</h1>
+
       {error ? (
         <p>{error}</p>
       ) : (
         <div className='currency-converter'>
+                <h1>Convertidor de Monedas</h1>
           <div className='input-group'>
             <label htmlFor='fromCurrency'>De:</label>
             <select 

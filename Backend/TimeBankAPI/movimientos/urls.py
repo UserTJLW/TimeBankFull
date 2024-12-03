@@ -6,5 +6,5 @@ router = DefaultRouter()
 router.register(r'movimientos', MovimientoViewSet, basename='movimiento')
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(router.urls)),  
 ]

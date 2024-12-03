@@ -10,10 +10,6 @@ const Sidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = () => {
-    navigate('/login');
-  };
-
   return (
     <div className={`${styles.sidebarWrapper} ${isOpen ? styles.open : ''}`}>
       <div className={styles.sidebar}>
@@ -29,9 +25,10 @@ const Sidebar = () => {
           <li><Link to="/transferencias">Transferencias</Link></li>
           <li><Link to="/cuentas">Cuentas</Link></li>
           <li><Link to="/tarjetas">Tarjetas</Link></li>
+          <li><Link to="/movimientos" >Movimientos</Link></li>
           <li><Link to="/convertidor">Conversor de moneda</Link></li>
           <li><Link to="/helpcenter">Centro de ayuda</Link></li>
-          <li><Link to="/login" onClick={handleLogout}>Cerrar Sesión</Link></li>
+
         </ul>
       </div>
     </div>

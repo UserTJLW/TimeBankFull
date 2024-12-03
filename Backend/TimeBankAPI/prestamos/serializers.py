@@ -5,7 +5,7 @@ from cuentas.models import Cuenta
 class PrestamoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prestamo
-        fields = ['id', 'tipo_prestamo', 'monto', 'fecha_inicio', 'estado']
+        fields = ['id', 'tipo_prestamo', 'monto', 'fecha_inicio', 'estado','cuenta']
 
     def validate(self, data):
         """

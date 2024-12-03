@@ -30,15 +30,13 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert(`Bienvenido ${data.message}`);
-        login(data.token);
-        localStorage.setItem('token', data.token);
-        setTimeout(() => {
-          navigate('/inicio');
-        }, 1000);
+        login(data.token);  // Esto actualizará el contexto de autenticación
+        localStorage.setItem('token', data.token);  // Guarda el token en el localStorage
+        navigate('/inicio');  // Redirige al usuario inmediatamente
       } else {
         setError(data.error || "Credenciales inválidas.");
       }
+      
     } catch (error) {
       setError("Hubo un problema con la conexión.");
     }
