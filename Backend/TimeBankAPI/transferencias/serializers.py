@@ -3,10 +3,24 @@ from .models import Transferencia
 from cuentas.models import Cuenta
 
 class TransferenciaSerializer(serializers.ModelSerializer):
-
+    destino_nombre = serializers.SerializerMethodField()  # Agregamos el campo para el nombre de destino
+    origen_nombre = serializers.SerializerMethodField()  # Agregamos el campo para el nombre de destino
     class Meta:
         model = Transferencia
         fields = ['id', 'destino','origen_nombre', 'destino_nombre', 'monto', 'fecha', 'estado']
+
+    def get_destino_nombre(self, obj):
+        """
+        Obtener el nombre del cliente asociado a la cuenta de destino.
+        """
+        # Suponemos que 'cliente' tiene un campo 'nombre'
+        return obj.destino.cliente.nombre
+    def get_origen_nombre(self, obj):
+        """
+        Obtener el nombre del cliente asociado a la cuenta de destino.
+        """
+        # Suponemos que 'cliente' tiene un campo 'nombre'
+        return obj.origen.cliente.nombre
 
 
     def validate(self, data):
