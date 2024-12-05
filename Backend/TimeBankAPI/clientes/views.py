@@ -125,10 +125,7 @@ class ClienteViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        """
-        Devuelve la lista de clientes según el tipo de usuario.
-        Los administradores pueden ver todos los clientes, los demás solo su propio cliente.
-        """
+
         user = self.request.user
         try:
             if user.cliente.tipo_cliente == "Admin":  # Solo los administradores pueden ver todos los clientes
@@ -137,3 +134,73 @@ class ClienteViewSet(viewsets.ModelViewSet):
                 return Cliente.objects.filter(user=user)  # Los demás usuarios solo pueden ver su propio cliente
         except Cliente.DoesNotExist:
             return Cliente.objects.none()  # Si no tiene un cliente asociado, no devuelve nada
+        
+class ClienteRegisterView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        cliente_serializer = ClienteSerializer(data=request.data)
+        if cliente_serializer.is_valid():
+            cliente = cliente_serializer.save()
+            return Response({
+                'cliente': cliente_serializer.data,
+                'message': "Cliente registrado exitosamente.",
+            }, status=status.HTTP_201_CREATED)
+        else:
+            return Response(cliente_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ClienteLoginView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        if not username or not password:
+            return Response({"error": "Por favor, proporciona username y password."}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = authenticate(request, username=username, password=password)
+        if user:
+            login(request, user)
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({
+                "message": f"Bienvenido {user.username}, inicio de sesión exitoso.",
+                "token": token.key
+            }, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "Credenciales inválidas."}, status=status.HTTP_401_UNAUTHORIZED)
+
+class ClienteLoggedInView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        cliente = user.cliente
+        return Response({
+            "nombre": cliente.nombre,
+            "apellido": cliente.apellido,
+            "email": cliente.email,
+            "telefono": cliente.telefono,
+            "tipo_cliente": cliente.tipo_cliente,
+            "saldo": cliente.cuenta.saldo,
+            "cvu": cliente.cuenta.cvu,
+        })
+
+class ClienteDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, cliente_id):
+        try:
+            cliente = Cliente.objects.get(id=cliente_id)
+        except Cliente.DoesNotExist:
+            return Response({"error": "Cliente no encontrado."}, status=status.HTTP_404_NOT_FOUND)
+
+        if cliente.user != request.user and not request.user.is_staff:
+            return Response({"error": "No tienes permiso para acceder a este cliente."}, status=status.HTTP_403_FORBIDDEN)
+
+        serializer = ClienteDetailSerializer(cliente)
+        return Response(serializer.data)
+
+
+

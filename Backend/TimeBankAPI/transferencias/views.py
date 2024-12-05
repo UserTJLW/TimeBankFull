@@ -5,6 +5,7 @@ from rest_framework.exceptions import ValidationError
 from .models import Transferencia
 from .serializers import TransferenciaSerializer
 from cuentas.models import Cuenta
+from rest_framework.views import APIView
 
 class TransferenciaViewSet(viewsets.ModelViewSet):
     queryset = Transferencia.objects.all()
@@ -35,3 +36,26 @@ class TransferenciaViewSet(viewsets.ModelViewSet):
         destino = serializer.validated_data['destino']
         destino.saldo += serializer.validated_data['monto']
         destino.save()
+
+class TransferenciaCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = TransferenciaSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            transferencia = serializer.save()
+            return Response({
+                "message": "Transferencia realizada exitosamente.",
+                "transferencia": serializer.data
+            }, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class TransferenciaListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        transferencias = Transferencia.objects.filter(origen=user.cliente.cuenta)
+        serializer = TransferenciaSerializer(transferencias, many=True)
+        return Response(serializer.data)

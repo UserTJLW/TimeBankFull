@@ -1,5 +1,6 @@
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Prestamo
 from .serializers import PrestamoSerializer
@@ -44,3 +45,17 @@ class PrestamoViewSet(viewsets.ModelViewSet):
         request.data['cuenta'] = cuenta.id
 
         return super().create(request, *args, **kwargs)
+
+class PrestamoCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = PrestamoSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            prestamo = serializer.save()
+            return Response({
+                "message": "Préstamo aprobado exitosamente.",
+                "prestamo": serializer.data
+            }, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
