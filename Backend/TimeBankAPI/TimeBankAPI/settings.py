@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tarjetas',
     'prestamos',
     'movimientos',
+    'sucursales',
     'corsheaders',
     'rest_framework.authtoken',
 

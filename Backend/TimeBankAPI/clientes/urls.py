@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from .views import update_address
 from clientes.views import ClienteViewSet, ClienteRegisterView, ClienteLoginView, ClienteLogoutView, ClienteDetailView,ClienteLoggedInView
 
 # Configuración del router para el ViewSet
@@ -13,6 +14,7 @@ urlpatterns = [
     path("clientes/logout/", ClienteLogoutView.as_view(), name="cliente-logout"),  # (opcional) Logout
     path("clientes/<int:cliente_id>/detalles/", ClienteDetailView.as_view(), name="cliente-detalles"),  # Ruta para detalles del cliente
     path('clientes/logged-in/', ClienteLoggedInView.as_view(), name='cliente_logged_in'),
+    path('update-address/', update_address, name='update_address'),
 
     path("", include(router.urls)),  # Incluir las rutas del router
 ]

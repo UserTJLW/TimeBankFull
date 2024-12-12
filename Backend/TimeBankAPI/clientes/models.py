@@ -20,6 +20,7 @@ class Cliente(models.Model):
     email = models.EmailField(blank=True)  # Usamos el email del usuario
     telefono = models.CharField(max_length=15, blank=True)
     fecha_nacimiento = models.DateField(null=True, blank=True)
+    direccion = models.CharField(max_length=255, blank=True)
     
     # Usamos las opciones definidas para el campo tipo_cliente
     tipo_cliente = models.CharField(

@@ -2,13 +2,6 @@ from rest_framework import serializers
 from clientes.models import Cliente
 from django.contrib.auth.models import User
 from cuentas.models import Cuenta
-from cuentas.serializers import CuentaSerializer
-from tarjetas.serializers import TarjetaSerializer
-
-from rest_framework import serializers
-from clientes.models import Cliente
-from django.contrib.auth.models import User
-from cuentas.models import Cuenta
 from tarjetas.models import Tarjeta
 from cuentas.serializers import CuentaSerializer
 from tarjetas.serializers import TarjetaSerializer
@@ -21,7 +14,7 @@ class ClienteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cliente
-        fields = ['nombre', 'apellido', 'dni', 'email', 'telefono', 'fecha_nacimiento', 'tipo_cliente', 'username', 'password']
+        fields = ['nombre', 'apellido', 'dni', 'email', 'telefono', 'fecha_nacimiento', 'tipo_cliente', 'username', 'password','direccion']
 
     def create(self, validated_data):
         # Se obtiene el campo 'user' que es un objeto de User
