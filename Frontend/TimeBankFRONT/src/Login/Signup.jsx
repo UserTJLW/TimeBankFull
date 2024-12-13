@@ -10,6 +10,7 @@ const Signup = () => {
     dni: '',
     email: '',
     telefono: '',
+    direccion: '',
     fecha_nacimiento: '',
     tipo_cliente: 'Cliente',
     username: '',
@@ -125,6 +126,16 @@ const Signup = () => {
             id="telefono"
             name="telefono"
             value={formData.telefono}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="direccion">Direccion</label>
+          <input
+            type="text"
+            id="direccion"
+            name="direccion"
+            value={formData.direccion}
             onChange={handleChange}
           />
         </div>

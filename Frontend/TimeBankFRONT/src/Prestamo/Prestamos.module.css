@@ -1,5 +1,5 @@
-/* Prestamos.module.css */
-.prestamoContainer {
+.prestamoContainer,
+.cancelLoanContainer {
   width: 100%;
   max-width: 500px;
   margin: 20px auto;
@@ -50,11 +50,10 @@ form input {
 }
 
 form input[type="number"] {
-  -moz-appearance: textfield;  
-  -webkit-appearance: none;    
-  appearance: none;  
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: none;
 }
-
 
 form select:focus,
 form input:focus {
@@ -85,7 +84,9 @@ button:hover:not(:disabled) {
 
 /* Responsive */
 @media (max-width: 600px) {
-  .prestamoContainer {
+
+  .prestamoContainer,
+  .cancelLoanContainer {
     padding: 15px;
   }
 
@@ -93,7 +94,9 @@ button:hover:not(:disabled) {
     font-size: 20px;
   }
 
-  form select, form input, button {
+  form select,
+  form input,
+  button {
     font-size: 14px;
   }
 }

@@ -13,7 +13,7 @@
     background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco semi-transparente */
     border-radius: 12px;
     padding: 20px;
-    width: 320px; /* Ancho moderado */
+    width:320px; /* Ancho moderado */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
     text-align: center;
   }

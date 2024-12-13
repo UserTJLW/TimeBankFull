@@ -13,6 +13,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
 
 from tarjetas.models import Tarjeta
+
 # Vista para login del cliente
 class ClienteLoginView(APIView):
     permission_classes = [AllowAny]
@@ -39,9 +40,9 @@ class ClienteLoginView(APIView):
 # Vista para obtener detalles del cliente autenticado
 class ClienteLoggedInView(APIView):
     authentication_classes = [TokenAuthentication] 
-    permission_classes = []  # No es necesario tener restricciones adicionales para esta vista en particular
+    permission_classes = [IsAuthenticated]  # Añadimos la autenticación requerida
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         user = request.user
         if user.is_authenticated:
             print(f'Usuario autenticado: {user.username}')
@@ -81,7 +82,7 @@ class ClienteDetailView(APIView):
         serializer = ClienteDetailSerializer(cliente)
         return Response(serializer.data)
 
-
+# Vista para cerrar la sesión del cliente
 class ClienteLogoutView(APIView):
     permission_classes = [AllowAny]
 
@@ -90,6 +91,8 @@ class ClienteLogoutView(APIView):
         return Response({
             "message": "Logout exitoso"
         }, status=status.HTTP_200_OK)
+
+# Vista para registrar un nuevo cliente
 class ClienteRegisterView(APIView):
     permission_classes = [AllowAny]  # Permitir acceso sin autenticación
 
@@ -119,14 +122,12 @@ class ClienteRegisterView(APIView):
             # Capturamos cualquier otro tipo de error
             return Response({"error": "Hubo un problema al crear la cuenta. Detalles: " + str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
 # Vista para gestionar la lista de clientes (Administrador solo puede ver todos)
 class ClienteViewSet(viewsets.ModelViewSet):
     serializer_class = ClienteSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-
         user = self.request.user
         try:
             if user.cliente.tipo_cliente == "Admin":  # Solo los administradores pueden ver todos los clientes
@@ -135,88 +136,19 @@ class ClienteViewSet(viewsets.ModelViewSet):
                 return Cliente.objects.filter(user=user)  # Los demás usuarios solo pueden ver su propio cliente
         except Cliente.DoesNotExist:
             return Cliente.objects.none()  # Si no tiene un cliente asociado, no devuelve nada
-        
-class ClienteRegisterView(APIView):
-    permission_classes = [AllowAny]
 
-    def post(self, request):
-        cliente_serializer = ClienteSerializer(data=request.data)
-        if cliente_serializer.is_valid():
-            cliente = cliente_serializer.save()
-            return Response({
-                'cliente': cliente_serializer.data,
-                'message': "Cliente registrado exitosamente.",
-            }, status=status.HTTP_201_CREATED)
-        else:
-            return Response(cliente_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-class ClienteLoginView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
-
-        if not username or not password:
-            return Response({"error": "Por favor, proporciona username y password."}, status=status.HTTP_400_BAD_REQUEST)
-
-        user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)
-            token, created = Token.objects.get_or_create(user=user)
-            return Response({
-                "message": f"Bienvenido {user.username}, inicio de sesión exitoso.",
-                "token": token.key
-            }, status=status.HTTP_200_OK)
-        else:
-            return Response({"error": "Credenciales inválidas."}, status=status.HTTP_401_UNAUTHORIZED)
-
-class ClienteLoggedInView(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        user = request.user
-        cliente = user.cliente
-        return Response({
-            "nombre": cliente.nombre,
-            "apellido": cliente.apellido,
-            "email": cliente.email,
-            "telefono": cliente.telefono,
-            "tipo_cliente": cliente.tipo_cliente,
-            "saldo": cliente.cuenta.saldo,
-            "cvu": cliente.cuenta.cvu,
-        })
-
-class ClienteDetailView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, cliente_id):
-        try:
-            cliente = Cliente.objects.get(id=cliente_id)
-        except Cliente.DoesNotExist:
-            return Response({"error": "Cliente no encontrado."}, status=status.HTTP_404_NOT_FOUND)
-
-        if cliente.user != request.user and not request.user.is_staff:
-            return Response({"error": "No tienes permiso para acceder a este cliente."}, status=status.HTTP_403_FORBIDDEN)
-
-        serializer = ClienteDetailSerializer(cliente)
-        return Response(serializer.data)
-    
+# Vista para actualizar los datos del cliente autenticado
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_address(request):
+def update_cliente(request):
     user = request.user
     try:
-        client = Cliente.objects.get(user=user)
+        cliente = Cliente.objects.get(user=user)
     except Cliente.DoesNotExist:
         return Response({'error': 'Cliente no encontrado'}, status=status.HTTP_404_NOT_FOUND)
     
-    serializer = ClienteSerializer(client, data=request.data, partial=True)
+    serializer = ClienteSerializer(cliente, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-

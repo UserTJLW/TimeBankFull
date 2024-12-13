@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Inicio.module.css';
+import EditCliente from './EditCliente';
 
 const LandPage = () => {
   const [clienteData, setClienteData] = useState(null);
   const [error, setError] = useState(null);
-  const [showAccountDetails, setShowAccountDetails] = useState(false); // Estado para mostrar/ocultar datos de la cuenta
+  const [isEditing, setIsEditing] = useState(false); // Estado para controlar la edición
 
   useEffect(() => {
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
     if (token) {
       fetch('http://127.0.0.1:8000/clientes/logged-in/', {
         method: 'GET',
         headers: {
-          'Authorization': `Token ${token}`, 
+          'Authorization': `Token ${token}`,
         },
       })
         .then(response => {
@@ -23,7 +24,8 @@ const LandPage = () => {
           return response.json();
         })
         .then(data => {
-          setClienteData(data); // Recibo los datos del cliente aquí
+          console.log(data); // Verifica que los datos se reciben correctamente
+          setClienteData(data);
         })
         .catch(error => {
           setError('Error al obtener los datos del cliente: ' + error.message);
@@ -34,8 +36,9 @@ const LandPage = () => {
     }
   }, []);
 
-  const toggleAccountDetails = () => {
-    setShowAccountDetails(prevState => !prevState); // Cambia el estado para mostrar/ocultar los detalles de la cuenta
+  const handleUpdate = (updatedData) => {
+    setClienteData(updatedData);
+    setIsEditing(false); // Cierra el formulario de edición después de actualizar
   };
 
   if (error) {
@@ -48,16 +51,23 @@ const LandPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.card}>
-        <h1>Hola {clienteData.user} que bueno que estes de vuelta!</h1>
-        <h2>Informacion personal: </h2>
-        <p>Email: {clienteData.email}</p>
-        <p>Telefono: {clienteData.telefono}</p>
-        <p>Fecha de nacimiento: {clienteData.nacimiento}</p>
-        <p>DNI: {clienteData.dni}</p>
-        <p>Tipo de cuenta: {clienteData.cuenta}</p>
-
-      </div>
+      {isEditing ? (
+        <EditCliente clienteData={clienteData} onUpdate={handleUpdate} />
+      ) : (
+        <div className={styles.card}>
+          <h1>Hola {clienteData.user || 'Usuario'} que bueno que estes de vuelta!</h1>
+          <h2>Información personal:</h2>
+          <p>Email: {clienteData.email || 'No especificado'}</p>
+          <p>Teléfono: {clienteData.telefono || 'No especificado'}</p>
+          <p>Dirección: {clienteData.direccion || 'No especificada'}</p>
+          <p>Fecha de nacimiento: {clienteData.nacimiento || 'No especificada'}</p>
+          <p>DNI: {clienteData.dni || 'No especificado'}</p>
+          <p>Tipo de cuenta: {clienteData.cuenta || 'No especificada'}</p>
+          <p>Saldo: {clienteData.saldo || 'No especificado'}</p>
+          <p>CVU: {clienteData.cvu || 'No especificado'}</p>
+          <button onClick={() => setIsEditing(true)}>Editar Datos</button>
+        </div>
+      )}
     </div>
   );
 };
