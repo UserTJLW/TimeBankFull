@@ -36,6 +36,7 @@ class ClienteSerializer(serializers.ModelSerializer):
             telefono=validated_data.get('telefono', ''),
             fecha_nacimiento=validated_data.get('fecha_nacimiento', None),
             tipo_cliente=validated_data['tipo_cliente'],
+             direccion=validated_data.get('direccion', ''),
             email=validated_data.get('email', '')  # Guardar el email en el modelo Cliente
         )
 

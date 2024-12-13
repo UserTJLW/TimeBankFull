@@ -20,6 +20,10 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
+        index: true,
+        element: <ProtectedRoute element={<LandPage />} />,
+      },
+      {
         path: '/inicio',
         element: <ProtectedRoute element={<LandPage />} />,
       },

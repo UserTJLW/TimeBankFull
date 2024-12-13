@@ -16,17 +16,17 @@ export const AuthProvider = ({ children }) => {
       setAuthData(null);
     }
     
-    setLoading(false);  // Cambiar el estado de carga después de verificar el token
-  }, []);  // Esto se ejecuta solo una vez al montar el componente
+    setLoading(false);  
+  }, []); 
 
   const login = (token) => {
     setAuthData({ token });
-    localStorage.setItem('token', token);  // Guardar el token en localStorage
+    localStorage.setItem('token', token);  
   };
 
   const logout = () => {
     setAuthData(null);
-    localStorage.removeItem('token');  // Eliminar el token de localStorage
+    localStorage.removeItem('token');  
   };
 
   return (
